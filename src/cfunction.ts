@@ -71,6 +71,7 @@ export class CFunction {
   private readonly workdir: string;
 
   constructor(props: CFunctionProps) {
+    const outdir = mkdtempSync(join(tmpdir(), '.cf.out.'));
     this.workdir = mkdtempSync(join(tmpdir(), '.cf.work.'));
     this.env = {};
 
@@ -80,7 +81,7 @@ export class CFunction {
     const runtimesrc = dirname(require.resolve(join(__dirname, '..', 'resources', 'cfruntime.js')));
     copySync(runtimesrc, workdir);
 
-    const outfile = resolve(workdir, 'cf.js');
+    const outfile = resolve(outdir, 'cf.js');
 
     const epcode = new Array<string>();
 
@@ -97,8 +98,10 @@ export class CFunction {
     chdir(workdir);
     try {
       const result = esbuild.buildSync({
+        bundle: true,
         entryPoints: [relative(workdir, entrypoint)],
-        outfile: relative(workdir, outfile),
+        outfile,
+        platform: 'node',
         logLevel: 'silent',
       });
       if (result.warnings?.length) {

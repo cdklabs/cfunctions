@@ -6,16 +6,44 @@ Object {
     "__CF__x__": "12",
     "__CF__y__": "78",
   },
-  "js": "const x = process.env[\\"__CF__x__\\"];
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x2) {
+    return typeof x2 === \\"object\\" && \\"then\\" in x2 && \\"catch\\" in x2;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var x = process.env[\\"__CF__x__\\"];
 if (x === void 0) {
   throw new Error(\\"missing required environment variable '__CF__x__'\\");
 }
-const y = process.env[\\"__CF__y__\\"];
+var y = process.env[\\"__CF__y__\\"];
 if (y === void 0) {
   throw new Error(\\"missing required environment variable '__CF__y__'\\");
 }
-const output = x + y;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+var output = x + y;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -25,13 +53,40 @@ Object {
   "env": Object {
     "__CF__hello__": "[1,2,\\"hello\\",true,{ \\"world\\": 1}]",
   },
-  "js": "const hello = process.env[\\"__CF__hello__\\"];
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var hello = process.env[\\"__CF__hello__\\"];
 if (hello === void 0) {
   throw new Error(\\"missing required environment variable '__CF__hello__'\\");
 }
-const output = true;
-;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+var output = true;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -48,10 +103,100 @@ exports[`async literal 1`] = `"value from a function"`;
 exports[`capture another cfunction 1`] = `
 Object {
   "env": Object {},
-  "js": "const f1 = require(\\"./11baf7d47f5f2d0e75e218f9420f6b2568609dad.js\\");
-const boom = require(\\"./09a0b1404d511d53bb910bca93a35eb87f58e7df.js\\");
-const output = async () => await f1() + 2 + await boom(77);
-module.exports = require(\\"./cfruntime\\").wrap(output);
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// a7db9f5b39aff35858c21324987f4635dae174e5.js
+var require_a7db9f5b39aff35858c21324987f4635dae174e5 = __commonJS((exports2, module2) => {
+  var __commonJS2 = (callback, module22) => () => {
+    if (!module22) {
+      module22 = {exports: {}};
+      callback(module22.exports, module22);
+    }
+    return module22.exports;
+  };
+  var require_cfruntime2 = __commonJS2((exports22, module22) => {
+    function wrap(output22) {
+      return async function(...args) {
+        if (typeof output22 === \\"function\\") {
+          output22 = output22(...args);
+        }
+        if (isPromise(output22)) {
+          output22 = await output22;
+        }
+        return output22;
+      };
+    }
+    function isPromise(x) {
+      return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+    }
+    module22.exports = {wrap};
+  });
+  var output2 = () => 42;
+  module2.exports = require_cfruntime2().wrap(output2);
+});
+
+// 8c53027a78125d55c36a1d2e8a01c52e2fcb772b.js
+var require_c53027a78125d55c36a1d2e8a01c52e2fcb772b = __commonJS((exports2, module2) => {
+  var __commonJS2 = (callback, module22) => () => {
+    if (!module22) {
+      module22 = {exports: {}};
+      callback(module22.exports, module22);
+    }
+    return module22.exports;
+  };
+  var require_cfruntime2 = __commonJS2((exports22, module22) => {
+    function wrap(output22) {
+      return async function(...args) {
+        if (typeof output22 === \\"function\\") {
+          output22 = output22(...args);
+        }
+        if (isPromise(output22)) {
+          output22 = await output22;
+        }
+        return output22;
+      };
+    }
+    function isPromise(x) {
+      return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+    }
+    module22.exports = {wrap};
+  });
+  var output2 = async function(x) {
+    return 3 * x;
+  };
+  module2.exports = require_cfruntime2().wrap(output2);
+});
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var f1 = require_a7db9f5b39aff35858c21324987f4635dae174e5();
+var boom = require_c53027a78125d55c36a1d2e8a01c52e2fcb772b();
+var output = async () => await f1() + 2 + await boom(77);
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -66,16 +211,44 @@ Object {
     "__CF__data__": "{ \\"field1\\": [\\"a\\",\\"b\\"],\\"field2\\": true}",
     "__CF__hello__": "\\"yes\\"",
   },
-  "js": "const hello = process.env[\\"__CF__hello__\\"];
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var hello = process.env[\\"__CF__hello__\\"];
 if (hello === void 0) {
   throw new Error(\\"missing required environment variable '__CF__hello__'\\");
 }
-const data = process.env[\\"__CF__data__\\"];
+var data = process.env[\\"__CF__data__\\"];
 if (data === void 0) {
   throw new Error(\\"missing required environment variable '__CF__data__'\\");
 }
-const output = true;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+var output = true;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -83,9 +256,36 @@ module.exports = require(\\"./cfruntime\\").wrap(output);
 exports[`no capture 1`] = `
 Object {
   "env": Object {},
-  "js": "const output = true;
-;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var output = true;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -97,13 +297,40 @@ Object {
   "env": Object {
     "__CF__hello__": "22",
   },
-  "js": "const hello = process.env[\\"__CF__hello__\\"];
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var hello = process.env[\\"__CF__hello__\\"];
 if (hello === void 0) {
   throw new Error(\\"missing required environment variable '__CF__hello__'\\");
 }
-const output = true;
-;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+var output = true;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
@@ -113,12 +340,40 @@ Object {
   "env": Object {
     "__CF__hello__": "{ }",
   },
-  "js": "const hello = process.env[\\"__CF__hello__\\"];
+  "js": "var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
+  }
+  return module2.exports;
+};
+
+// cfruntime.js
+var require_cfruntime = __commonJS((exports2, module2) => {
+  function wrap(output2) {
+    return async function(...args) {
+      if (typeof output2 === \\"function\\") {
+        output2 = output2(...args);
+      }
+      if (isPromise(output2)) {
+        output2 = await output2;
+      }
+      return output2;
+    };
+  }
+  function isPromise(x) {
+    return typeof x === \\"object\\" && \\"then\\" in x && \\"catch\\" in x;
+  }
+  module2.exports = {wrap};
+});
+
+// entrypoint.js
+var hello = process.env[\\"__CF__hello__\\"];
 if (hello === void 0) {
   throw new Error(\\"missing required environment variable '__CF__hello__'\\");
 }
-const output = true;
-module.exports = require(\\"./cfruntime\\").wrap(output);
+var output = true;
+module.exports = require_cfruntime().wrap(output);
 ",
 }
 `;
