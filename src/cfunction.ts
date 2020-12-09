@@ -3,7 +3,21 @@ import { createHash } from 'crypto';
 import { tmpdir } from 'os';
 import { join, resolve, dirname, relative } from 'path';
 import { chdir } from 'process';
+
+try {
+  /* eslint-disable import/no-extraneous-dependencies */
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require.resolve('esbuild/package.json');
+  /* eslint-enable import/no-extraneous-dependencies */
+} catch (e) {
+  throw new Error('"esbuild" must be installed on the system');
+}
+
+
+// we are taking a "runtime peer" dependency on esbuild
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as esbuild from 'esbuild';
+
 import { mkdtempSync, writeFileSync, readFileSync, copySync } from 'fs-extra';
 
 export interface CFunctionProps {

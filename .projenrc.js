@@ -12,7 +12,10 @@ const project = new JsiiProject({
   },
 });
 
-project.addBundledDeps('esbuild', 'fs-extra@8');
-project.addDevDeps('@types/fs-extra@8');
+project.addBundledDeps('fs-extra@8');
+project.addDevDeps('@types/fs-extra@8', 'esbuild');
+
+// since it's a native module we have to rely on consumer to install it on their system
+// project.addPeerDeps('esbuild@^0.8.21');
 
 project.synth();
