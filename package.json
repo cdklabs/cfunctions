@@ -2,7 +2,7 @@
   "name": "cfunctions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benisrae/cfunctions.git"
+    "url": "https://github.com/eladb/cfunctions.git"
   },
   "bin": {},
   "scripts": {
@@ -28,6 +28,7 @@
     "organization": false
   },
   "devDependencies": {
+    "@types/fs-extra": "8",
     "@types/jest": "^26.0.18",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
@@ -50,8 +51,14 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {},
-  "dependencies": {},
-  "bundledDependencies": [],
+  "dependencies": {
+    "esbuild": "^0.8.21",
+    "fs-extra": "8"
+  },
+  "bundledDependencies": [
+    "esbuild",
+    "fs-extra"
+  ],
   "keywords": [],
   "main": "lib/index.js",
   "license": "Apache-2.0",
@@ -90,7 +97,12 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "python": {
+        "distName": "cfunctions",
+        "module": "cfunctions"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"

@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`a real example 1`] = `
+Object {
+  "env": Object {
+    "__CF__x__": "12",
+    "__CF__y__": "78",
+  },
+  "js": "const x = process.env[\\"__CF__x__\\"];
+if (x === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__x__'\\");
+}
+const y = process.env[\\"__CF__y__\\"];
+if (y === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__y__'\\");
+}
+const output = x + y;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`array objects 1`] = `
+Object {
+  "env": Object {
+    "__CF__hello__": "[1,2,\\"hello\\",true,{ \\"world\\": 1}]",
+  },
+  "js": "const hello = process.env[\\"__CF__hello__\\"];
+if (hello === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__hello__'\\");
+}
+const output = true;
+;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`async function 1`] = `
+Object {
+  "no": 100,
+  "yes": "async",
+}
+`;
+
+exports[`async literal 1`] = `"value from a function"`;
+
+exports[`capture another cfunction 1`] = `
+Object {
+  "env": Object {},
+  "js": "const f1 = require(\\"./11baf7d47f5f2d0e75e218f9420f6b2568609dad.js\\");
+const boom = require(\\"./09a0b1404d511d53bb910bca93a35eb87f58e7df.js\\");
+const output = async () => await f1() + 2 + await boom(77);
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`function 1`] = `42`;
+
+exports[`function literal 1`] = `"value from a function"`;
+
+exports[`multiple captures 1`] = `
+Object {
+  "env": Object {
+    "__CF__data__": "{ \\"field1\\": [\\"a\\",\\"b\\"],\\"field2\\": true}",
+    "__CF__hello__": "\\"yes\\"",
+  },
+  "js": "const hello = process.env[\\"__CF__hello__\\"];
+if (hello === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__hello__'\\");
+}
+const data = process.env[\\"__CF__data__\\"];
+if (data === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__data__'\\");
+}
+const output = true;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`no capture 1`] = `
+Object {
+  "env": Object {},
+  "js": "const output = true;
+;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`output is executable 1`] = `300`;
+
+exports[`primitive 1`] = `
+Object {
+  "env": Object {
+    "__CF__hello__": "22",
+  },
+  "js": "const hello = process.env[\\"__CF__hello__\\"];
+if (hello === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__hello__'\\");
+}
+const output = true;
+;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
+
+exports[`respects toJson() 1`] = `
+Object {
+  "env": Object {
+    "__CF__hello__": "{ }",
+  },
+  "js": "const hello = process.env[\\"__CF__hello__\\"];
+if (hello === void 0) {
+  throw new Error(\\"missing required environment variable '__CF__hello__'\\");
+}
+const output = true;
+module.exports = require(\\"./cfruntime\\").wrap(output);
+",
+}
+`;
