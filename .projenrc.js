@@ -5,7 +5,8 @@ const project = new JsiiProject({
   authorName: 'Elad Ben-Israel',
   name: 'cfunctions',
   repository: 'https://github.com/eladb/cfunctions.git',
-  releaseBranches: ['main'],
+  defaultReleaseBranch: 'main',
+  projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   python: {
     module: 'cfunctions',
     distName: 'cfunctions',
