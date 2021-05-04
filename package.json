@@ -15,6 +15,7 @@
     "test:watch": "npx projen test:watch",
     "test:update": "npx projen test:update",
     "projen:upgrade": "npx projen projen:upgrade",
+    "default": "npx projen default",
     "watch": "npx projen watch",
     "package": "npx projen package",
     "eslint": "npx projen eslint",
@@ -46,7 +47,7 @@
     "jsii-docgen": "^1.4.114",
     "jsii-pacmak": "^1.16.0",
     "json-schema": "^0.2.5",
-    "projen": "^0.17.65",
+    "projen": "^0.17.75",
     "standard-version": "^9",
     "ts-jest": "^26.4.4",
     "typescript": "^3.9.5"
