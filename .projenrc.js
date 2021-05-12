@@ -7,7 +7,8 @@ const project = new JsiiProject({
   repository: 'https://github.com/eladb/cfunctions.git',
   defaultReleaseBranch: 'main',
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
-  python: {
+
+  publishToPypi: {
     module: 'cfunctions',
     distName: 'cfunctions',
   },
