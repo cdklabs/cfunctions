@@ -1,4 +1,4 @@
-const { JsiiProject } = require('projen');
+const { JsiiProject, DependenciesUpgradeMechanism } = require('projen');
 
 const project = new JsiiProject({
   authorAddress: 'benisrae@amazon.com',
@@ -12,6 +12,16 @@ const project = new JsiiProject({
     module: 'cfunctions',
     distName: 'cfunctions',
   },
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    // see https://github.com/cdklabs/cfunctions/issues/145
+    exclude: ['esbuild'],
+    workflowOptions: {
+      secret: 'PROJEN_GITHUB_TOKEN',
+      container: {
+        image: 'jsii/superchain',
+      },
+    },
+  }),
 });
 
 project.addBundledDeps('fs-extra@8');
