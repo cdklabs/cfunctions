@@ -21,8 +21,14 @@ const project = new JsiiProject({
       container: {
         image: 'jsii/superchain',
       },
+      labels: ['auto-approve'],
     },
   }),
+  autoApproveOptions: {
+    allowedUsernames: ['aws-cdk-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
+  autoApproveUpgrades: true,
 });
 
 project.addBundledDeps('fs-extra@8');
