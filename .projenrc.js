@@ -15,6 +15,7 @@ const project = new JsiiProject({
   depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
     // see https://github.com/cdklabs/cfunctions/issues/145
     exclude: ['esbuild'],
+    ignoreProjen: false,
     workflowOptions: {
       secret: 'PROJEN_GITHUB_TOKEN',
       container: {
