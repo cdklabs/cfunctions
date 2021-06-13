@@ -23,6 +23,11 @@ const project = new JsiiProject({
       },
     },
   }),
+  autoApproveOptions: {
+    allowedUsernames: ['aws-cdk-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
+  autoApproveUpgrades: true,
 });
 
 project.addBundledDeps('fs-extra@8');
