@@ -21,6 +21,7 @@ const project = new JsiiProject({
       container: {
         image: 'jsii/superchain',
       },
+      labels: ['auto-approve'],
     },
   }),
   autoApproveOptions: {
