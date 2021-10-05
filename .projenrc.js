@@ -12,18 +12,10 @@ const project = new JsiiProject({
     module: 'cfunctions',
     distName: 'cfunctions',
   },
-  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+  depsUpgradeOptions: {
     // see https://github.com/cdklabs/cfunctions/issues/145
     exclude: ['esbuild'],
-    ignoreProjen: false,
-    workflowOptions: {
-      secret: 'PROJEN_GITHUB_TOKEN',
-      container: {
-        image: 'jsii/superchain',
-      },
-      labels: ['auto-approve'],
-    },
-  }),
+  },
   autoApproveOptions: {
     allowedUsernames: ['cdklabs-automation'],
     secret: 'GITHUB_TOKEN',
