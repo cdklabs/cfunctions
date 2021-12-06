@@ -1,6 +1,6 @@
-const { JsiiProject, DependenciesUpgradeMechanism } = require('projen');
+const { cdk, DependenciesUpgradeMechanism } = require('projen');
 
-const project = new JsiiProject({
+const project = new cdk.JsiiProject({
   authorAddress: 'benisrae@amazon.com',
   authorName: 'Elad Ben-Israel',
   name: 'cfunctions',
